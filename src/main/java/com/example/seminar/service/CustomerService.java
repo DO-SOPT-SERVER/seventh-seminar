@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class CustomerService {
 
     private final CustomerJpaRepository customerJpaRepository;
 
     @Transactional
     public void create(CustomerRequest request) {
-        CustomerEntity customer = new CustomerEntity(request.name(), request.age());
+        CustomerEntity customer = CustomerEntity.builder()
+                .name(request.name())
+                .age(request.age())
+                .nickname(request.nickname())
+                .build();
         System.out.println(customer);
         customerJpaRepository.save(customer);
     }
