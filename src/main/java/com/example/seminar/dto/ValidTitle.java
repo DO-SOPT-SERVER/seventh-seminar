@@ -14,4 +14,6 @@ import java.lang.annotation.Target;
 public @interface ValidTitle {
 
     String message() default "Invalid title";
+
+    String pattern() default "[가-힣|a-z|A-Z|0-9|]";
 }

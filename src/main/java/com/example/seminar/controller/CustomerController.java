@@ -1,9 +1,8 @@
 package com.example.seminar.controller;
 
 
-import com.example.seminar.dto.PostRequest;
-import com.example.seminar.service.PostService;
-import jakarta.validation.Valid;
+import com.example.seminar.dto.CustomerRequest;
+import com.example.seminar.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/posts")
-public class PostController {
+@RequestMapping("/customers")
+public class CustomerController {
 
-    private final PostService postService;
+    private final CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Void> createPost(@Valid @RequestBody PostRequest request) {
-        postService.create(request);
+    public ResponseEntity<Void> createCustomer(@RequestBody CustomerRequest request) {
+        customerService.create(request);
         return ResponseEntity.ok().build();
     }
 }
